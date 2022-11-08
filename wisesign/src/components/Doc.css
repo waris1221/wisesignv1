@@ -1,0 +1,33 @@
+.docItem{
+    /* width: 45.95%; */
+    text-align: left;
+    padding: 10px;
+    background-color: rgb(231, 231, 231);
+    margin: 5px;
+}
+.docTitle{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.docState{
+    color: gray;
+    font-size: 14px;
+}
+.docState i {
+    min-width: 5px !important;
+    min-height: 5px !important;
+}
+.linkToDoc{
+    color: rgb(18, 18, 253);
+}
+
+@media screen  and (max-width: 480px){
+    .docItem{
+        /* width: 100% !important; */
+    }
+}
+
+@media screen  and (max-width: 768px){
+    
+}

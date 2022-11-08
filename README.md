@@ -1,2 +1,2 @@
-# wisesignv1
-school project
+# wisesign
+degree project in computer security

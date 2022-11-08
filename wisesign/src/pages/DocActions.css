@@ -1,0 +1,56 @@
+.actionButtons{
+    width: 95%;
+    /* border: 1px solid black; */
+    margin: auto;
+    /* padding: 5px; */
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.signingButtonBox, .verfyingBox{
+    width: 50%;
+    /* padding: 5px; */
+    margin: 1px;
+    /* border: 1px solid black; */
+
+}
+.signingButton, .verifyingButton{
+
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.signingButton:hover{
+    background-color: rgb(255, 31, 31);
+}
+
+.verifyingButton:hover{
+    background-color: #24cc89;
+}
+
+.divider{
+    width: 95%;
+    margin: auto;
+}
+
+.virifyingform input, .virifyingform button{
+    width: 100% !important;
+}
+
+.virifyingform input{
+    height: 32px !important;
+}
+
+.signersinfo{
+    width: 95%;
+    margin: auto;
+}
+.signersinfo .title{
+    font-size: 1em !important;
+    font-weight: bold;
+}
+.signersinfo p{
+    margin: 0;
+}
+

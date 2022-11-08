@@ -1,0 +1,45 @@
+.newdoc{
+    width: 80%;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #2EE59D;
+    border: none;
+    /* border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+.newdoc i{
+    padding-right: 5px;
+}
+
+
+form input{
+    border: none;
+    width: 80%;
+    padding-top: 13px;
+    height: 40px;
+    margin-top: 15px;
+    background-color: rgb(218, 218, 218);
+
+}
+
+form button {
+    border: none;
+    width: 80%;
+    padding: 8px;
+    margin-top: 15px;
+    height: 45px;
+    background-color: #2EE59D;
+
+
+}
+form button:hover{
+    background-color: #24cc89;
+}

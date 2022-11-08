@@ -1,0 +1,80 @@
+.container{
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+
+}
+
+.pdfshower{
+    width: 50%;
+    /* border: 1px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.pdfform{
+    width: 30%;
+    /* height: 16em; */
+    /* border: 1px solid black; */
+    padding: 10px;
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    top: 0px;
+
+}
+
+
+.pdfform textarea {
+    border: none;
+    width: 95%;
+    padding-top: 13px;
+    /* height: 40px; */
+    margin-top: 15px;
+    margin: auto;
+    background-color: rgb(218, 218, 218);
+
+}
+
+.pdfform input {
+    border: none;
+    width: 95%;
+    padding-top: 13px;
+    height: 40px ;
+    margin-top: 15px;
+    margin: auto;
+    background-color: rgb(218, 218, 218);
+
+}
+
+
+
+.pdfform label{
+    width: 100%;
+    display:block;
+    /* background-color: aquamarine; */
+    padding: 5px;
+    text-align: left !important;
+}
+
+.pdfform button{
+    border: none;
+    width: 95%;
+    padding: 8px;
+    margin-top: 15px;
+    height: 45px;
+}
+
+@media screen  and (max-width: 480px){
+    .pdfshower, .pdfform{
+        width: 100%;
+    }
+}
+@media screen  and (max-width: 768px){
+    .pdfshower, .pdfform{
+        width: 100%;
+    }
+}
