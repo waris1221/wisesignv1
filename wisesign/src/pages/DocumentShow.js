@@ -12,7 +12,7 @@ const DocumentShow = () => {
 
     const {conAdd} = useContext(Context)
     // console.log(conAdd)
-    const Items = []
+    let Items = []
     useEffect(() => {
         async function getUserDocs(){
             
@@ -36,6 +36,7 @@ const DocumentShow = () => {
                 // setDocuments(Object.entries(docs))
                 const documents = Object.values(docs)
                 console.log(documents)
+                let fetchedItems = [];
                 documents.map(async (document)=>{
                     let documentContract = new Contract(document, abi2, provider);
                     let name =  await documentContract.name()
@@ -43,7 +44,7 @@ const DocumentShow = () => {
                     let url = await documentContract.ipfs_hash()
                     let left = await documentContract.left()
                     left = left.toNumber()
-                    // Items.push(<Doc name={name} desc={desc} left={left} />)
+                    fetchedItems.push(<Doc name={name} desc={desc} left={left} />)
                     console.log(document,name, desc, url,  left)
                 })
 
@@ -52,6 +53,8 @@ const DocumentShow = () => {
                 //     let name =  document.name()
                 //     console.log(documentContract, name)
                 // });
+                Items= fetchedItems
+                console.log(Items)
 
             } catch (error) {
                 console.log(error)
@@ -69,10 +72,13 @@ const DocumentShow = () => {
                     <UploadForm/>
                 </div>
                 <div className="docShower">
+                    {/* <Doc/>
                     <Doc/>
                     <Doc/>
-                    <Doc/>
-                    <Doc/>
+                    <Doc/> */}
+                    {Items.forEach(element => {
+                        
+                    })}
                 </div>
                 {/* <button type='button' onClick={userDocs}>try</button> */}
             </div>
