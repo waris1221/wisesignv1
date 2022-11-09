@@ -14,8 +14,8 @@ contract Document{
     mapping (address=>string) public addressToString;
 
     uint public timestamp;
-    string ipfs_hash;
-    uint left;
+    string public ipfs_hash;
+    uint public left;
     event signed (address signer );
 
     constructor(string memory _name, string memory _description, string memory _ipsf, address _creator, string memory ownerName){

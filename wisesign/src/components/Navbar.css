@@ -120,3 +120,18 @@
     min-width: 100px;
     text-decoration: none;
 }
+
+.addressBox{
+    margin: 3px;
+    padding: 15px;
+    background-color: #2EE59D !important;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addressLabel{
+    padding: 3px;
+    background-color: #000 !important;
+    border-radius: 11px;
+}

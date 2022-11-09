@@ -2,12 +2,16 @@ import './NewDoc.css';
 import './DocActions.css';
 import { Document, Page } from 'react-pdf';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const DocActions = () =>{
 
+    const location = useLocation();
+    const ipfsBaseUrl = "https://ipfs.io/ipfs/";
     const [showUpload, setShowUpload] = useState(false);
+    const [ipfs_path, setIpfsPath] = useState(location.state);
 
     const handleShowUpload = () => {
         setShowUpload(!showUpload)
@@ -19,7 +23,7 @@ const DocActions = () =>{
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
     }
-
+    console.log(ipfs_path)
     return (
         <>
             <p className='title'> <i className='fa fa-edit'></i>Document</p>
@@ -70,7 +74,8 @@ const DocActions = () =>{
                     </div>                 
                 </div>
                 <div className='pdfshower'>
-                    <Document file={process.env.PUBLIC_URL + 'sample.pdf'} onLoadSuccess={onDocumentLoadSuccess} width={50}>
+                    {/* <Document file={process.env.PUBLIC_URL + 'sample.pdf'} onLoadSuccess={onDocumentLoadSuccess} width={50}> */}
+                    <Document file={ipfsBaseUrl + ipfs_path} onLoadSuccess={onDocumentLoadSuccess} width={50}>
                         <Page pageNumber={pageNumber} />
                     </Document>
                 <p>

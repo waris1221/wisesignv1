@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useEffect, useContext, useRef } from "react";
+import { useEffect, useContext, useRef, useState } from "react";
 import { Context } from '../Context';
 import { providers } from "ethers";
 import Web3Modal from "web3modal";
@@ -8,7 +8,8 @@ import Web3Modal from "web3modal";
 
 const Navbar = () =>  {
     const web3ModalRef = useRef();
-    const {walletConnected, setWalletConnected} = useContext(Context)
+    const {walletConnected, setWalletConnected, conAdd, setConAdd} = useContext(Context)
+    // const [address, setAddress] = useState('')
 
 
 
@@ -17,6 +18,8 @@ const Navbar = () =>  {
         // Since we store `web3Modal` as a reference, we need to access the `current` value to get access to the underlying object
         const provider = await web3ModalRef.current.connect();
         const web3Provider = new providers.Web3Provider(provider);
+        const userAddress = await web3Provider.getSigner().getAddress();
+        setConAdd(userAddress)
     
         // If user is not connected to the Goerli network, let them know and throw an error
         const { chainId } = await web3Provider.getNetwork();
@@ -54,11 +57,14 @@ const Navbar = () =>  {
             providerOptions: {},
             disableInjectedProvider: false,
         });
-        // connectWallet();
+        connectWallet();
+        
+
         }
     }, [walletConnected]);
 
-  
+   console.log(conAdd)
+    
   return (
       <>
           <div className="nav-box" >
@@ -83,8 +89,9 @@ const Navbar = () =>  {
                         <button className="button" onClick={connectWallet} >connect wallet</button>
                     </div>
                     }
-                    {walletConnected &&<div className="dropdown">
-                        <button>Address</button>
+                    {walletConnected &&<div className="addressBox">
+                        Address: <span className="addressLabel">{` ${conAdd.slice(0,4)}...${conAdd.slice(38)}`}</span>
+                        {/* <button>Address : {address}</button> */}
                         {/* <div className="dropdown-content">
                             <a href="https://blog.hubspot.com/">LOGOUT</a>
                         </div> */}

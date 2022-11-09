@@ -78,3 +78,19 @@
         width: 100%;
     }
 }
+
+.doclink{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: black;
+
+}
+.doclink a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.CircularProgress{
+    max-height: 5px !important;
+}

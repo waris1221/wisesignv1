@@ -43,3 +43,6 @@ form button {
 form button:hover{
     background-color: #24cc89;
 }
+.CircularProgress{
+    max-height: 5px !important;
+}

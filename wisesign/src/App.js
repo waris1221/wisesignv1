@@ -12,9 +12,9 @@ import {useState} from "react"
 
 function App() {
 
-
   const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
+	const [conAdd, setConAdd] = useState();
   console.log(selectedFile)
 
   // const web3ModalRef = useRef();
@@ -66,12 +66,12 @@ function App() {
   //   }
   // }, [walletConnected]);
 
-
+console.log(conAdd)
 
 
 
   return (
-    <Context.Provider value={{selectedFile, setSelectedFile, isFilePicked, setIsFilePicked, walletConnected, setWalletConnected}}>
+    <Context.Provider value={{selectedFile, setSelectedFile, isFilePicked, setIsFilePicked, walletConnected, setWalletConnected, conAdd, setConAdd}}>
       <div className="App">
       {/* <button onClick={connectWallet}>connect</button> */}
         <div className='maincontainer'>
