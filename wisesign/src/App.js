@@ -15,7 +15,7 @@ function App() {
   const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 	const [conAdd, setConAdd] = useState();
-  console.log(selectedFile)
+  // console.log(selectedFile)
 
   // const web3ModalRef = useRef();
   const [walletConnected, setWalletConnected] = useState(false);
@@ -66,7 +66,7 @@ function App() {
   //   }
   // }, [walletConnected]);
 
-console.log(conAdd)
+// console.log(conAdd)
 
 
 

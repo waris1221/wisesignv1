@@ -63,7 +63,7 @@ const Navbar = () =>  {
         }
     }, [walletConnected]);
 
-   console.log(conAdd)
+//    console.log(conAdd)
     
   return (
       <>
