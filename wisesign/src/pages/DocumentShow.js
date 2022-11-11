@@ -25,6 +25,7 @@ const DocumentShow = () => {
                 signer
             );
             const _documents = await docFactoryContract.getDocuments(conAdd).catch(e=>e)
+            console.log(_documents)
             const items = await Promise.all(_documents.map(async (document)=>{
                 let documentContract = new Contract(document, abi2, provider);
                 let name =  await documentContract.name()
@@ -36,16 +37,18 @@ const DocumentShow = () => {
                     'name': name,
                     'desc': desc,
                     'url': url,
-                    'left': left
+                    'left': left,
+                    'add' : document
                 }
                 return itemObj;
             })).then(r=>r)
+            console.log(items)
             setItems(items);
         };
         conAdd && fetchDoc()
         
     },[conAdd])
-    console.log(items)
+    console.log(items,conAdd)
    
     
 
@@ -72,7 +75,7 @@ const DocumentShow = () => {
 
                     {items.map((item, index)=>(
                         // <li key={index}>{item.name}</li>
-                        <Doc key={index} name={item.name} desc={item.desc} left={item.left}/>
+                        <Doc key={index} name={item.name} desc={item.desc} left={item.left} url={item.url} add={item.add}/>
                     ))}
 
                 

@@ -16,6 +16,8 @@ const NewDoc = () => {
     const navigate = useNavigate();
     const [ipfsPath, setIpfsPath] = useState(location.state);
 
+    const ipfs = (typeof ipfsPath == 'object') ? ipfsPath.ipfs_hash  : ipfsPath
+
     const [name, setName] = useState('');
     const [ownerName, setOwnerName] = useState('');
     const [description, setDescription] = useState('');
@@ -40,7 +42,7 @@ const NewDoc = () => {
         setOwnerName(e.target.value)
         console.log(ownerName)
     }
-
+    // console.log(location.state.ipfs_hash)
 
     const handleSubmission = async () => {
         try {
@@ -101,9 +103,12 @@ const NewDoc = () => {
                 <div className='pdfshower'>
                     {/* <Document file={process.env.PUBLIC_URL + 'sample.pdf'} onLoadSuccess={onDocumentLoadSuccess} width={50}> */}
                     {/* <Document file='https://www.football.ch/fr/Portaldata/27/Resources/dokumente/kinderfussball/SFV_KiFu_Theorie_und_Praxis_F.pdf' onLoadSuccess={onDocumentLoadSuccess} width={50}> */}
-                    <Document file={ipfsBaseUrl + ipfsPath} onLoadSuccess={onDocumentLoadSuccess} width={50}>
+                    {
+                    ipfs && <Document file={ipfsBaseUrl + ipfs} onLoadSuccess={onDocumentLoadSuccess} width={50}>
                         <Page pageNumber={pageNumber} />
                     </Document>
+                    }
+                  
                 <p>
                     Page {pageNumber} of {numPages} 
                 </p>

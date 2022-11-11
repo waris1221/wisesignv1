@@ -57,7 +57,7 @@ const Navbar = () =>  {
             providerOptions: {},
             disableInjectedProvider: false,
         });
-        connectWallet();
+        // connectWallet();
         
 
         }
