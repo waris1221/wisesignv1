@@ -4,6 +4,7 @@ import { useEffect, useContext, useRef, useState } from "react";
 import { Context } from '../Context';
 import { providers } from "ethers";
 import Web3Modal from "web3modal";
+import logo from '../logo.png'
 
 
 const Navbar = () =>  {
@@ -57,7 +58,7 @@ const Navbar = () =>  {
             providerOptions: {},
             disableInjectedProvider: false,
         });
-        // connectWallet();
+        connectWallet();
         
 
         }
@@ -69,19 +70,19 @@ const Navbar = () =>  {
       <>
           <div className="nav-box" >
               <div className="logo">
-                Logo
-                <div>
+                <img src={logo} style={{maxWidth: '9em'}}/>
+                {/* <div>
                     <Link to='/'><span  className="link">Home</span></Link>
-                </div>
+                </div> */}
                 <div>
                     <Link to='/showdocs'><span  className="link">MyDocs</span></Link>
                 </div>
-                <div>
+                {/* <div>
                     <Link to='/new'><span  className="link">New</span></Link>
                 </div> 
                 <div>
                     <Link to='/docaction'><span  className="link">Actions</span></Link>
-                </div>
+                </div> */}
               </div>
               <div className="nav-link">
                    {! walletConnected && 

@@ -36,6 +36,7 @@ const DocActions = () =>{
 
     const ipfsBaseUrl = "https://ipfs.io/ipfs/";
     const [isLoading, setIsLoading] = useState(false);
+    const [isVerifying, setIsVerifying] = useState(false);
     const [sigingIsLoading, setSigingIsLoading] = useState(false);
     const [showUpload, setShowUpload] = useState(false);
     const [ipfsPath, setIpfsPath] = useState(location.state);
@@ -53,6 +54,9 @@ const DocActions = () =>{
     const [selectedFile, setSelectedFile] = useState()
     const [isFilePicked, setIsFilePicked] = useState()
 
+    const [verifyedHash, setVerifyedHash] = useState()
+    const [verifyingAns, setVerifyingAns] = useState()
+
     const ipfs = (typeof ipfsPath == 'object') ? ipfsPath.ipfs_hash  : ipfsPath
 
     const handleShowUpload = () => {
@@ -60,11 +64,11 @@ const DocActions = () =>{
     }
     const handleNameChange = (e) =>{
         setSignerName(e.target.value)
-        console.log(signerName)
+        // console.log(signerName)
     }
     const handleSignerAddChange = (e) =>{
         setSignerAdd(e.target.value)
-        console.log(signerAdd)
+        // console.log(signerAdd)
     }
     const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -92,6 +96,7 @@ const DocActions = () =>{
             setIsLoading(true)
             await tx.wait()
             setIsLoading(false)
+            window.location.reload(true);
             
         } catch (error) {
             console.log(error)
@@ -103,11 +108,11 @@ const DocActions = () =>{
         try {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
-            const docContract = new Contract(
-                docAdd,
-                abi2,
-                signer
-            );
+            // const docContract = new Contract(
+            //     docAdd,
+            //     abi2,
+            //     signer
+            // );
 
             const docFactoryContract = new Contract(
                 WISESIGN_CONTRACT_ADDRESS,
@@ -118,7 +123,7 @@ const DocActions = () =>{
 
 
 
-            if(signerName.length == 0){
+            if(signerName.length === 0){
                 alert('Please enter signer name')
                 return 
             }
@@ -142,8 +147,40 @@ const DocActions = () =>{
         }
     }
 
-    const handleVerifyForm = async function(){
-        
+    const handleVerifyForm = async function(e){
+        e.preventDefault();
+        const file = selectedFile
+        // console.log(url);
+        if (typeof file =='undefined') {
+            return alert("No files selected");
+        }
+
+        const ipfs_result = await ipfsInstance.add(file);
+        const ipfs_hash = ipfs_result.path
+        setVerifyedHash(ipfs_hash)
+        console.log(ipfs_hash)
+        try {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const docContract = new Contract(
+                docAdd,
+                abi2,
+                signer
+            );
+            setIsVerifying(true)
+
+            const isRight = await docContract.checkIntegrity(ipfs_hash)
+            // await tx.wait()
+
+            setIsVerifying(false)
+            setVerifyingAns(isRight)
+
+            console.log(isRight)
+            setIsFilePicked(false)
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -195,7 +232,7 @@ const DocActions = () =>{
                 })).then(r=>r)
                 setSignersInfo(itemsPromise)
 
-                console.log(owner,ownerName,didSign,signersCount, _getsigners)
+                console.log(owner,ownerName,didSign,signersCount, _getsigners,itemsPromise )
             } catch (error) {
                 console.log(error)
             }
@@ -213,6 +250,7 @@ const DocActions = () =>{
                         <div className='signingButtonBox'>{isLoading ? <div className='CircularProgress'><CircularProgress color='success'/></div> : <button  className='signingButton' onClick={signDoc} disabled={didSign}><i className='fa fa-edit'>SIGN DOC</i> </button>}</div>
                         <div className='verfyingBox'>
                             {!showUpload && <button  className='verifyingButton' onClick={handleShowUpload}><i className='fa fa-check'></i> VERIFY DOC</button>}
+                            
                             {showUpload  && <div className='virifyingform'>
                                 <form>
                                     <input className='' type='file' name='file' onChange={changeHandler}></input> <br/>
@@ -229,16 +267,18 @@ const DocActions = () =>{
                                     ) : (
                                         <p>Select a file to show details</p>
                                     )}
-                                    <button type='button' className='' onClick={handleVerifyForm}>SUBMIT</button>
+                                    {isVerifying ? <div className='CircularProgress'><CircularProgress color='success'/></div> : <button type='button' className='' onClick={handleVerifyForm}>SUBMIT</button>}
 
                                 </form>
                             </div>}
                         </div>
                     </div>
+                    {verifyingAns && <div className='VerifyingResultBox'>matched: {ipfs}</div>}
+                    {verifyingAns ===false && <div className='VerifyingResultBox2'>mismatched: {ipfs}</div>}
                     <div className='divider'>
                         <hr/>
                     </div>
-                    {docOwner == conAdd &&<div>
+                    {docOwner === conAdd &&<div>
                         <div>
                             <p>New Signer</p>
                         </div>
@@ -269,6 +309,8 @@ const DocActions = () =>{
                             // <p key={i}>{info}</p>
                             <li key={i}>{info}</li>
                         ))} */}
+
+
                         
 
                     </div>                 

@@ -32,15 +32,15 @@ const NewDoc = () => {
 
     const handleDesChange = (e) => {
         setDescription(e.target.value)
-        console.log(description);
+        // console.log(description);
     }
     const handleNameChange = (e) => {
         setName(e.target.value)
-        console.log(name)
+        // console.log(name)
     }
     const handleOwnerNameChange = (e) => {
         setOwnerName(e.target.value)
-        console.log(ownerName)
+        // console.log(ownerName)
     }
     // console.log(location.state.ipfs_hash)
 
@@ -63,7 +63,8 @@ const NewDoc = () => {
             await tx.wait();
             setIsLoading(false)
 
-            navigate('/docaction', {state: ipfsPath})
+            // navigate('/docaction', {state: ipfsPath})
+            navigate('/showdocs', {state: ipfsPath})
 
 
         // console.log(wisSignContract)
