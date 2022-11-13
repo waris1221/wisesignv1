@@ -92,7 +92,7 @@ const DocActions = () =>{
                 signer
             );
 
-            const tx = await docContract.sign({value: ethers.utils.parseEther("0.001")})
+            const tx = await docContract.sign({value: ethers.utils.parseEther("0.0001")})
             setIsLoading(true)
             await tx.wait()
             setIsLoading(false)

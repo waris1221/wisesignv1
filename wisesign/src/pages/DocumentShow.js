@@ -64,7 +64,7 @@ const DocumentShow = () => {
                 <div className="form">
                     <UploadForm/>
                 </div>
-                <div className="docShower">
+                {items.length > 0 ? (<div className="docShower">
                     {/* <Doc/>
                     <Doc/>
                     <Doc/>
@@ -79,7 +79,11 @@ const DocumentShow = () => {
                     ))}
 
                 
-                </div>
+                </div>):(
+                    <p className='nodoc'>
+                        You haven't actually any document. Click On the side button to create one
+                    </p>
+                )}
             </div>
             {/* <button type='button' onClick={renderItems}>try</button> */}
 

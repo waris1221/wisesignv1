@@ -4,7 +4,7 @@ import { useEffect, useContext, useRef, useState } from "react";
 import { Context } from '../Context';
 import { providers } from "ethers";
 import Web3Modal from "web3modal";
-import logo from '../logo.png'
+import logo from '../logo1.png'
 
 
 const Navbar = () =>  {

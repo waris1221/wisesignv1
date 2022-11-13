@@ -20,13 +20,20 @@
     margin: 0 !important;
     width: 100% !important;
 }
+.signingButton{
+    background-color: rgb(254, 143, 143);
+}
 
 .signingButton:hover{
     background-color: rgb(255, 31, 31);
 }
 
-.verifyingButton:hover{
+.verifyingButton{
     background-color: #24cc89;
+}
+
+.verifyingButton:hover{
+    background-color: #38b985;
 }
 
 .divider{

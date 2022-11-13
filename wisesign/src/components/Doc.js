@@ -6,13 +6,13 @@ const Doc = (props) => {
         <>
            { <div className='docItem'>
                 <span className='docTitle'> {props.name} {props.left == 0 &&<span style={{color: '#08b771'}}><i className='fa fa-circle-check'></i></span>}</span> <br/>
-                {props.left > 0 && <span className='docState'>pending <i className='fa fa-clock'></i></span>} <br/>
+                {props.left > 0 && <span className='docState'>pending <i className='fa fa-clock'></i></span>} {props.left > 0 && <br/>}               
+                <span className='description'>{props.desc}</span><br/>
                 <span className='linkToDoc'>
                     <Link to='/docaction' state={{ipfs_hash: props.url, add: props.add}}>
                         View Document
                     </Link>                
-                </span> <br/>
-                <span className='description'>{props.desc}</span>
+                </span> 
                 
             </div>}
 

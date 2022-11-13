@@ -3,7 +3,9 @@
     text-align: left;
     padding: 10px;
     background-color: rgb(231, 231, 231);
-    margin: 5px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 }
 .docTitle{
     font-size: 25px;
