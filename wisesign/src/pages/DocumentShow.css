@@ -38,7 +38,8 @@
 .nodoc{
     margin: 1px;
     padding: 3px;
-    background-color: brown;
+    color: white;
+    background-color: rgb(209, 209, 244);
     height: 3em;
     display: flex;
     align-items: center;
