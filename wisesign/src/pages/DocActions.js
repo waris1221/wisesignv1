@@ -231,6 +231,7 @@ const DocActions = () =>{
                     // return p
                 })).then(r=>r)
                 setSignersInfo(itemsPromise)
+                console.log(itemsPromise)
 
                 console.log(owner,ownerName,didSign,signersCount, _getsigners,itemsPromise )
             } catch (error) {
@@ -303,12 +304,14 @@ const DocActions = () =>{
                         <p>{docOwnerName} </p>
                         {/* {didSign ? <span className='didsignlogo'><i className='fa fa-circle-check'></i></span>:<span className='waitsignlogo'><i className='fa fa-clock'></i></span>} */}
                         <span className='title'>Signer(s):</span>
-                        {/* {signersInfo.map((info, i)=>(
-                            // <p key={i}> {info.address} (info.name)</p>
+                        {console.log(signersInfo)}
+                        {/* {` ${conAdd.slice(0,4)}...${conAdd.slice(38)}`} */}
+                        {signersInfo?.map((info, i)=>(
+                            <p key={i}> {`${info.address.slice(0,4)}...${info.address.slice(38)}`} ({info.name}){info.hasSigned ? <i className='fa fa-circle-check' style={{color: "#24cc89"}}></i>: <i className='fa fa-clock' style={{color: "gray"}}></i>}</p>
                             // <p key={i}>xxxxx</p>
                             // <p key={i}>{info}</p>
-                            <li key={i}>{info}</li>
-                        ))} */}
+                            // <li key={i}>{info.name}</li>
+                        ))}
 
 
                         
